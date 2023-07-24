@@ -8,14 +8,14 @@ const endpoint2 = '/AodXIm7GI_rw/data';
 
 export const foo = () => {
     fetch(`${url}${endpoint1}`, { headers })
-        .then(res => res.json())
+        .then((res) => res.json())
         .then(({ hasUsersData }) => {
             if (hasUsersData) {
                 return fetch(`${url}${endpoint2}`, { headers });
             }
             throw new Error('empty response');
         })
-        .then(res => res.json())
-        .then(data => console.log(data))
-        .catch(e => console.log(e));
-}
+        .then((res) => res.json())
+        .then((data) => console.log(data))
+        .catch((e) => console.log(e));
+};

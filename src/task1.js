@@ -5,6 +5,8 @@ export const foo = (x, cb) => {
     } else {
         console.log('x <= 10');
     }
-}
+};
 
-export const createCb = (str) => () => { console.log(str) };
+export const createCb = (str) => () => {
+    console.log(str);
+};

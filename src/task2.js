@@ -5,12 +5,12 @@ export const parseJSON = (jsonStr, successCb, failureCb) => {
     } catch (e) {
         failureCb(e);
     }
-}
+};
 
 export const successCb = (result) => {
     console.log('Success parse!', result);
-}
+};
 
 export const failureCb = (error) => {
     console.log('Failure parse!', error);
-}
+};
