@@ -4,3 +4,5 @@ async function foo() {
     const value = await asyncBar();
     console.log(value);
 }
+
+foo();

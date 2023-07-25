@@ -9,3 +9,6 @@ async function foo(url) {
         console.log('Error!', e);
     }
 }
+
+foo('https://jsonplaceholder.typicode.com/users');
+foo('ht://jsonplaceholder.typicode.com/users');

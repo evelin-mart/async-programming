@@ -9,3 +9,5 @@ async function foo() {
 
     console.log(value1 * (value2 + value3));
 }
+
+foo();

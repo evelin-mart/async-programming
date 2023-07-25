@@ -1,16 +1,20 @@
-export const parseJSON = (jsonStr, successCb, failureCb) => {
+const parseJSON = (jsonStr, successCb, failureCb) => {
     try {
         const result = JSON.parse(jsonStr);
         successCb(result);
     } catch (e) {
-        failureCb(e);
+        failureCb(e.message);
     }
 };
 
-export const successCb = (result) => {
+const successCb = (result) => {
     console.log('Success parse!', result);
 };
 
-export const failureCb = (error) => {
+const failureCb = (error) => {
     console.log('Failure parse!', error);
 };
+
+parseJSON('{ "x": 10 }', successCb, failureCb);
+parseJSON('{ x }', successCb, failureCb);
+parseJSON('{  }', successCb, failureCb);

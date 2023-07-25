@@ -1,4 +1,4 @@
-export const getResolvedPromise = (value) => Promise.resolve(value);
+const getResolvedPromise = (value) => Promise.resolve(value);
 
 getResolvedPromise(500)
     .then((value) => {
@@ -8,3 +8,5 @@ getResolvedPromise(500)
     })
     .catch((e) => console.log(e.message))
     .finally(() => console.log('This is finally'));
+
+getResolvedPromise(500);

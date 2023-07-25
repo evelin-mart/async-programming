@@ -1,4 +1,4 @@
-export const foo = (x, cb) => {
+const foo = (x, cb) => {
     if (x > 10) {
         console.log('x > 10');
         cb();
@@ -7,6 +7,9 @@ export const foo = (x, cb) => {
     }
 };
 
-export const createCb = (str) => () => {
+const createCb = (str) => () => {
     console.log(str);
 };
+
+foo(5, createCb('cb'));
+foo(20, createCb('cb'));

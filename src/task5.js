@@ -1,4 +1,7 @@
-import { headers } from './task4';
+const token = 'cbm0st03wt8x1djun3ww0yvr777pved7ryxqfx35';
+const headers = {
+    Authorization: `Bearer ${token}`,
+};
 
 const urls = [
     'https://api.json-generator.com/templates/AodXIm7GI_rw/data',
@@ -8,11 +11,32 @@ const urls = [
     'https://api.json-generator.com/templates/OZ6kZHzlHVIw/data',
 ];
 
-export const foo = () => {
+const foo = () => {
     Promise.allSettled(urls.map((url) => fetch(url, { headers })))
-        .then((results) => results.map((res) => (res.value ? res.value.json() : res.reason)))
+        .then((response) =>
+            Promise.allSettled(
+                response.map((res) => (res.status === 'fulfilled' ? res.value.json() : res)),
+            ),
+        )
+        .then((data) => data.map((res) => (res.status === 'fulfilled' ? res.value : res)))
         .then((data) => console.log(data))
-        .catch((e) => console.log(e));
+        .catch((e) => console.log(e.message));
 };
 
-export const foo2 = () => {};
+const foo2 = () => {
+    const result = [];
+
+    const promise = urls.reduce(
+        (acc, url) =>
+            acc
+                .then(() => fetch(url, { headers }))
+                .then((res) => res.json())
+                .then((data) => result.push(data)),
+        Promise.resolve(),
+    );
+
+    promise.then(() => result).then(console.log);
+};
+
+foo();
+foo2();
